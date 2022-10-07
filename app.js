@@ -191,12 +191,17 @@ function chars(input) {
 //////////////////////////////////////////* End Of Starter Code *//////////////////////////////////////////
 // Any additional functions can be written below this line 👇. Happy Coding! 😁
 
-/**
- * This function will find the person's immediate family members
- * @param {*} person          A singular object.
- * @param {*} people          A collection of person objects.
- */
-
 function findPersonFamily(person, people) {
-
+    let familyInfo = '';
+    let foundSpounse = people.filter(function(people){
+        if(person.currentSpouse === people.id){
+            return true;
+        }
+    })
+    if(foundSpounse.length === 0){
+        familyInfo += "No Spouse\n";
+    }else{
+        familyInfo += `Spouse: ${foundSpounse[0].firstName} ${foundSpounse[0].lastName}\n`;
+    }
+    return familyInfo;
 }
