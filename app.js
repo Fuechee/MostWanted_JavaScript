@@ -190,3 +190,13 @@ function chars(input) {
 
 //////////////////////////////////////////* End Of Starter Code *//////////////////////////////////////////
 // Any additional functions can be written below this line 👇. Happy Coding! 😁
+
+/**
+ * This function will find the person's immediate family members
+ * @param {*} person          A singular object.
+ * @param {*} people          A collection of person objects.
+ */
+
+function findPersonFamily(person, people) {
+
+}
