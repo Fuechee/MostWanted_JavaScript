@@ -140,6 +140,12 @@ function displayPeople(people) {
 function displayPerson(person) {
     let personInfo = `First Name: ${person.firstName}\n`;
     personInfo += `Last Name: ${person.lastName}\n`;
+    personInfo += `gender: ${person.gender}\n`;
+    personInfo += `dob: ${person.dob}\n`;
+    personInfo += `height: ${person.height}\n`;
+    personInfo += `weight: ${person.weight}\n`;
+    personInfo += `eyeColor: ${person.eyeColor}\n`;
+    personInfo += `occupation: ${person.occupation}\n`;
     //! TODO #1a: finish getting the rest of the information to display //////////////////////////////////////////
     alert(personInfo);
 }
