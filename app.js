@@ -274,3 +274,45 @@ function findPersonDescendants(person, people){
     }
     return personDescendants;
 }
+
+function searchByTraits(people){
+    let searchResults = people;
+    while(searchResults.length === 0 || searchResults.length > 1){
+        let searchTrait = promptFor("What trait do you want to search by: gender, dob, height, weight, eye color, occupation?\n Type your option or type restart or quit", chars);
+        switch(searchTrait){
+            case 'restart':
+                return app(people);
+                break;
+            case 'quit':
+                return;
+            case 'gender':
+                searchResults = searchByGender(searchResults)
+                if(searchResults.length != 0){
+                    alert(getResults(searchResults))
+                    break;
+                }else{
+                    return searchByTraits(people);
+                }
+        }
+
+    }
+    return searchResults;
+}
+
+function searchByGender(people){
+    let foundGender = promptFor("male or female: ", chars);
+    let searchResults = people.filter(function(people){
+        if(people.gender === foundGender){
+            return true;
+        }
+    })
+    return searchResults;
+}
+
+function getResults(searchResults){
+    let display =`Name: ${searchResults[0].firstName} ${searchResults[0].lastName}\n`;
+    for(let i=0; i < searchResults.length; i++){
+        display += `Name: ${searchResults[i].firstName} ${searchResults[i].lastName}\n`;
+    }
+    return display;
+}
