@@ -293,10 +293,34 @@ function searchByTraits(people){
                 }else{
                     return searchByTraits(people);
                 }
+            case 'dob':
+                searchResults = searchByDob(searchResults)
+                if(searchResults.length !=0){
+                    alert(getResults(searchResults))
+                    break;
+                }else{
+                    alert("Sorry, that date doesn't exist");
+                    return searchByTraits(people);
+                }
+            case 'height':
+
+            case 'weight':
+
+            case 'eyeColor':
+
+            case 'occupation':
         }
 
     }
     return searchResults;
+}
+
+function getResults(searchResults){
+    let display = '';
+    for(let i=0; i < searchResults.length; i++){
+        display += `Name: ${searchResults[i].firstName} ${searchResults[i].lastName}\n`;
+    }
+    return display;
 }
 
 function searchByGender(people){
@@ -309,10 +333,28 @@ function searchByGender(people){
     return searchResults;
 }
 
-function getResults(searchResults){
-    let display =`Name: ${searchResults[0].firstName} ${searchResults[0].lastName}\n`;
-    for(let i=0; i < searchResults.length; i++){
-        display += `Name: ${searchResults[i].firstName} ${searchResults[i].lastName}\n`;
-    }
-    return display;
+function searchByDob(people){
+    let foundDob = promptFor("What date do you want to search by?\n", chars);
+    let searchResults = people.filter(function(people){
+        if(people.dob === foundDob){
+            return true;
+        }
+    })
+    return searchResults;
+}
+
+function searchByHeight(people){
+
+}
+
+function searchByWeight(people){
+    
+}
+
+function searchByEyeColor(people){
+    
+}
+
+function searchByOccupation(people){
+    
 }
