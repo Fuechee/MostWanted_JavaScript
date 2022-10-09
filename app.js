@@ -275,10 +275,61 @@ function findPersonDescendants(person, people){
     return personDescendants;
 }
 
+
+// My attempt on recursion
+
+// function findPersonDescendants(person, people, array=[]){
+//     let foundGrandChildren = [];
+//     array = people;
+//     let descendantsArray = person.descendants;
+//     let foundChildren = people.filter(function(people){
+//         for(let i=0; i< people.parents.length; i++){
+//             if(person.id == people.parents[i]){
+//                 let foundChildren2 = people;
+//                 let foundGrandChildren2 = array.filter(function(people){
+//                     for(let k=0; k< people.parents.length; k++){
+//                         if(foundChildren2 == people.parents[k]){
+//                             foundGrandChildren2.push(people);
+//                             return true;
+//                         }
+//                     }
+//                 })
+//             }
+//         }
+//         return true;
+//     })
+//     let personDescendants = '';
+//     if (descendantsArray.length === 0){
+//         return array;
+//     }
+//     for (let i=0; i < descendantsArray.length; i++){
+//         array = array.concat(
+//             recursiveFindDescendants(descendantsArray[i])
+//         );
+//         return array;
+//     }
+//     if(foundChildren.length === 0){
+//         personDescendants += "They have no children\n";
+//     }else{
+//         for(let i=0; i < foundChildren.length; i++){
+//             personDescendants += `Children: ${foundChildren[0].firstName} ${foundChildren[0].lastName}\n`;
+//         }
+//     }
+//     if(foundGrandChildren.length === 0){
+//         personDescendants += "They have no grandchildren";
+//     }else{
+//         for(let i=0; i < foundGrandChildren.length; i++){
+//             personDescendants += `Grandchildren: ${foundGrandChildren[i].firstName} ${foundGrandChildren[i].lastName}`;
+//         }
+//     }
+//     return personDescendants;
+// }
+
+
 function searchByTraits(people){
     let searchResults = people;
     while(searchResults.length === 0 || searchResults.length > 1){
-        let searchTrait = promptFor("What trait do you want to search by: gender, dob, height, weight, eye color, occupation?\n Type your option or type restart or quit", chars);
+        let searchTrait = promptFor("What trait do you want to search by: gender, dob, height, weight, eye color (type in eyeColor), occupation?\n Type your option or type restart or quit", chars);
         switch(searchTrait){
             case 'restart':
                 return app(people);
@@ -403,7 +454,7 @@ function searchByEyeColor(people){
 function searchByOccupation(people){
     let foundOccupation = promptFor("What occupation do you want to search by?\n", chars);
     let searchResults = people.filter(function(people){
-        if(people.eyeColor === foundOccupation){
+        if(people.occupation === foundOccupation){
             return true;
         }
     })
