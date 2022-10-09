@@ -312,7 +312,14 @@ function searchByTraits(people){
                     return searchByTraits(people);
                 }
             case 'weight':
-
+                searchResults = searchByWeight(searchResults)
+                if(searchResults.length !=0){
+                    alert(getResults(searchResults))
+                    break;
+                }else{
+                    alert("Sorry, that weight doesn't exist")
+                    return searchByTraits(people);
+                }
             case 'eyeColor':
 
             case 'occupation':
@@ -361,7 +368,13 @@ function searchByHeight(people){
 }
 
 function searchByWeight(people){
-    
+    let foundWeight = parseInt(promptFor("What weight do you want to search by?\n", chars));
+    let searchResults = people.filter(function(people){
+        if(people.weight === foundWeight){
+            return true;
+        }
+    })
+    return searchResults;
 }
 
 function searchByEyeColor(people){
