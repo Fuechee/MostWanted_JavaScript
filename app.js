@@ -329,6 +329,13 @@ function searchByTraits(people){
                     return searchByTraits(people);
                 }
             case 'occupation':
+                searchResults = searchByOccupation(searchResults)
+                if(searchResults.length !=0){
+                    alert(getResults(searchResults))
+                }else{
+                    alert("Sorry, that occupation doesn't exist")
+                    return searchByTraits(people);
+                }
         }
 
     }
@@ -394,5 +401,11 @@ function searchByEyeColor(people){
 }
 
 function searchByOccupation(people){
-    
+    let foundOccupation = promptFor("What occupation do you want to search by?\n", chars);
+    let searchResults = people.filter(function(people){
+        if(people.eyeColor === foundOccupation){
+            return true;
+        }
+    })
+    return searchResults;
 }
