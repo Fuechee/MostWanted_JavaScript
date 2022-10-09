@@ -321,7 +321,13 @@ function searchByTraits(people){
                     return searchByTraits(people);
                 }
             case 'eyeColor':
-
+                searchResults = searchByEyeColor(searchResults)
+                if(searchResults.length !=0){
+                    alert(getResults(searchResults))
+                }else{
+                    alert("Sorry, that eye color doesn't exist")
+                    return searchByTraits(people);
+                }
             case 'occupation':
         }
 
@@ -378,7 +384,13 @@ function searchByWeight(people){
 }
 
 function searchByEyeColor(people){
-    
+    let foundEyeColor = promptFor("What color do you want to search by?\n", chars);
+    let searchResults = people.filter(function(people){
+        if(people.eyeColor === foundEyeColor){
+            return true;
+        }
+    })
+    return searchResults;
 }
 
 function searchByOccupation(people){
